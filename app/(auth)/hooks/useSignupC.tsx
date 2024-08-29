@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { router } from "expo-router";
 import { Alert } from "react-native";
+import { fetchAPI } from "@/utility";
 import { useSignUp } from "@clerk/clerk-expo";
 
 export default function useSignupC() {
@@ -42,7 +43,14 @@ export default function useSignupC() {
             })
 
             if (completeSignUp.status === 'complete') {
-                // create a database user
+                await fetchAPI("/(api)/user", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        name: form.name,
+                        email: form.email,
+                        clerkId: completeSignUp.createdUserId
+                    })
+                })
 
                 await setActive({ session: completeSignUp.createdSessionId })
                 setVerification({ ...verification, state: 'success' });
@@ -64,7 +72,8 @@ export default function useSignupC() {
     }
 
     const handleRedirectToHome = () => {
-        router.replace("/(root)/(tabs)/component/home");
+        router.push("/(root)/(tabs)/home");
+        setShowSuccessModal(false);
     }
 
 
