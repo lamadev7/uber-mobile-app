@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
-import TabIcon from '@/components/TabIcon';
 import { icons } from '@/constant';
+import TabIcon from '@/components/TabIcon';
 
 export default function Layout() {
     return (
@@ -23,7 +23,7 @@ export default function Layout() {
                     alignItems: 'center',
                     flexDirection: 'row',
                     position: 'absolute'
-                }
+                },
             }}
         >
             <Tabs.Screen
