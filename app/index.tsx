@@ -6,11 +6,10 @@ import { useAuth } from '@clerk/clerk-expo';
 export default function Homepage() {
     const path: any = "/(auth)/onboarding";
 
-    const {isSignedIn} = useAuth();
-    console.log({isSignedIn})
+    const { isSignedIn } = useAuth();
 
-    if(isSignedIn){
-        return <Redirect href="/(root)/(tabs)/component/home"/>;
+    if (isSignedIn) {
+        return <Redirect href="/(root)/(tabs)/home" />;
     }
 
 
