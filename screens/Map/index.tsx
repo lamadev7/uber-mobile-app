@@ -23,12 +23,12 @@ export default function Map() {
                     >
                         <Marker
                             title="Origin"
+                            identifier='origin'
+                            description={origin.description}
                             coordinate={{
                                 latitude: origin.location.lat,
                                 longitude: origin.location.lng
                             }}
-                            identifier='origin'
-                            description={origin.description}
                         />
 
                     </MapView>
