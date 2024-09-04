@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { selectOrigin } from '../../../redux/slices';
 
 export default function useNav() {
     const navigation = useNavigation<any>();
+    const origin = useSelector(selectOrigin);
+
     const [navItems, setNavItems] = useState([]);
+
 
     useEffect(() => {
         const items: any = [
@@ -35,6 +40,7 @@ export default function useNav() {
     }
 
     return {
+        origin,
         navItems,
         handleRedirect,
     }

@@ -6,7 +6,7 @@ import useNav from './hooks/useNav';
 import { Icon } from 'react-native-elements';
 
 export default function Nav() {
-    const { navItems, handleRedirect } = useNav();
+    const { origin, navItems, handleRedirect } = useNav();
 
     return (
         <FlatList
@@ -15,7 +15,7 @@ export default function Nav() {
             keyExtractor={((item: any) => item.id)}
             renderItem={({ item }: any) => (
                 <TouchableOpacity
-                    style={twrc`bg-gray-200 px-7 py-4 mr-2`}
+                    style={twrc`bg-gray-200 px-7 py-4 mr-2 ${!origin ? 'opacity-60' : ''}`}
                     onPress={() => handleRedirect(item.screen)}
                 >
                     <View>
@@ -30,7 +30,7 @@ export default function Nav() {
                         color='white'
                         type='antdesign'
                         name='arrowright'
-                        style={twrc`bg-black p-2 rounded-full w-[38px] h-[38px] mt-4`}
+                        style={twrc`bg-black p-2 rounded-full w-[38px] h-[38px] mt-4 ${!origin ? 'opacity-60' : ''}`}
                     />
                 </TouchableOpacity>
             )}
