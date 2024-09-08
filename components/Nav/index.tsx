@@ -11,26 +11,28 @@ export default function Nav() {
     return (
         <FlatList
             horizontal
+            showsHorizontalScrollIndicator={false}
             data={navItems}
             keyExtractor={((item: any) => item.id)}
             renderItem={({ item }: any) => (
                 <TouchableOpacity
-                    style={twrc`bg-gray-200 px-7 py-4 mr-2 ${!origin ? 'opacity-60' : ''}`}
+                    disabled={!origin}
                     onPress={() => handleRedirect(item.screen)}
+                    style={twrc`bg-gray-200 px-7 py-4 mr-2 ${!origin ? 'opacity-60' : ''}`}
                 >
                     <View>
                         <Image
                             source={item.image}
                             resizeMode="contain"
-                            style={twrc`w-[60px] h-[60px]`}
+                            style={twrc`w-[50px] h-[50px]`}
                         />
                     </View>
-                    <Text style={twrc`mt-4 text-lg font-semibold`}>{item.title}</Text>
+                    <Text style={twrc`mt-4 font-semibold`}>{item.title}</Text>
                     <Icon
                         color='white'
                         type='antdesign'
                         name='arrowright'
-                        style={twrc`bg-black p-2 rounded-full w-[38px] h-[38px] mt-4 ${!origin ? 'opacity-60' : ''}`}
+                        style={twrc`bg-gray-600 rounded-full w-[35px] h-[35px] flex flex-row justify-center items-center mt-3 ${!origin ? 'opacity-60' : ''}`}
                     />
                 </TouchableOpacity>
             )}

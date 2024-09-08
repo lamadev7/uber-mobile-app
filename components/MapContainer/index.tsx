@@ -11,8 +11,8 @@ export default function MapContainer({ mapRef, origin, destination }: any) {
             style={tailwind`flex-1`}
             mapType='mutedStandard'
             initialRegion={{
-                latitude: origin.location.lat,
-                longitude: origin.location.lng,
+                latitude: origin?.location?.lat ?? 100,
+                longitude: origin?.location?.lng ?? 100,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
             }}

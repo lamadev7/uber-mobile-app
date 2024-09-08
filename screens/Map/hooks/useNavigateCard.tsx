@@ -15,7 +15,11 @@ export default function useNavigateCard() {
         navigation.navigate("RideCard");
     }
 
+    const handleNavigateTo = (path: string) => {
+        navigation.navigate(path);
+    }
     return {
+        handleNavigateTo,
         handleDestinationLocationPress,
     }
 }

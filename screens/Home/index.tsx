@@ -4,8 +4,9 @@ import React from 'react';
 import { Image, SafeAreaView, View } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-import Nav from '../../components/Nav';
 import useHome from './hooks/useHome';
+import Nav from '../../components/Nav';
+import NavFavourites from '../../components/NavFavourites';
 
 export default function Home() {
   const { handleLocationSelect } = useHome();
@@ -22,7 +23,7 @@ export default function Home() {
         <GooglePlacesAutocomplete
           debounce={400}
           minLength={2}
-          placeholder='Search'
+          placeholder='Search Origin'
           fetchDetails={true}
           onPress={handleLocationSelect}
           enablePoweredByContainer={false}
@@ -37,11 +38,13 @@ export default function Home() {
               paddingBottom: 25
             },
             textInput: {
-              fontSize: 18
+              fontSize: 14,
+              paddingLeft: 20
             }
           }}
         />
         <Nav />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   )
